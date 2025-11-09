@@ -12,8 +12,8 @@ corrRank = function(predictors, outcome){
   ranking = data.frame("Predictor", "Correlation", "Significance")
   stopifnot("Outcome variable must be numeric" = is.numeric(outcome))
   for (predictor in predictors){
-    stopifnot("Predictors and outcome must be equal length" = length(predictor)==length(outcome),
-              "Predictors must be numeric" = is.numeric(predictor))
+    stopifnot("Predictors and outcome must be equal length" = length(predictor)==length(outcome))
+    stopifnot("Predictors must be numeric" = is.numeric(predictor))
 
     rbind(ranking, data.frame(Predictor = predictor,
                               Correlation = cor(predictor, outcome, na.rm=TRUE),
