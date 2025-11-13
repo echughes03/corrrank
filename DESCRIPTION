@@ -3,7 +3,7 @@ Type: Package
 Title: Ranks Linear Correlations Between Outcome and Predictors
 Version: 0.0.0.9000
 Authors@R: 
-    person("Ever Hughes", "Lan Tang", , "emails", role = c("aut", "cre"))
+    person("Ever Hughes", "Lan Tang", "emails", role = c("aut", "cre"))
 Description: Given a set of continuous predictors and a continous outcome, return a ranked list of the strongest predictor-outcome correlations.
 License: MIT + file LICENSE
 Encoding: UTF-8
