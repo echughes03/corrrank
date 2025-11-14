@@ -8,7 +8,6 @@
 #' @export
 
 cplot <- function(predictors, outcome) {
-  # checks - variable type, length
 
   for (i in seq_along(predictors)) {
     predictor <- as.numeric(unlist(predictors[i]))
