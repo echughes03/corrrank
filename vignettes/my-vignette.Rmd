@@ -1,0 +1,41 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(corrRank)
+```
+
+## Introduction
+
+When working with a new data set, you often want to understand which variables are related and how. Before beginning a linear regression analysis, you may also want to explore relationships between potential predictors and outcomes. Analyzing each pair of correlations manually takes time and effort. The corrRank package speeds up this process by providing useful summaries and visualizations of predictor-outcome correlations.
+
+With corrRank, you can quickly discover:
+* The predictor with the strongest (and weakest) association with your outcome
+* Which correlations are significant
+* The strength and direction of associations
+* A scatterplot of the predictor-outcome relationship
+
+## Data: Cities
+
+The package has a built-in dataset, `cities`, which we will use to explore the package's function. The data measures various aspects of wellness in `r nrow(cities)` European cities.
+
+## Function: `corrRank()`
+
+
+
+## Function: `cplot()`
+
+

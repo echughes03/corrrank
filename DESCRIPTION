@@ -4,7 +4,7 @@ Title: Ranks Linear Correlations Between Outcome and Predictors
 Version: 0.0.0.9000
 Authors@R: 
     person("Ever Hughes", "Lan Tang", "emails", role = c("aut", "cre"))
-Description: Given a set of continuous predictors and a continous outcome, return a ranked list of the strongest predictor-outcome correlations.
+Description: Given a named list of continuous predictors (vectors) and a continuous outcome (vector), return a dataframe with the ranking of strongest to weakest correlation, correlation significance, and association interpretation.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -17,5 +17,8 @@ Depends:
     R (>= 3.5)
 LazyData: true
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+VignetteBuilder: knitr
