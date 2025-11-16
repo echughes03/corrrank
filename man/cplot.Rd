@@ -7,14 +7,19 @@
 cplot(predictors, outcome)
 }
 \arguments{
-\item{predictors}{list of predictors, vectors}
+\item{predictors}{list of numeric predictor(s), vectors}
 
-\item{outcome}{outcome variable, vector}
+\item{outcome}{numeric outcome variable, vector}
+}
+\value{
+list of ggplot2 output(s). List can be indexed to output specific plot(s)
 }
 \description{
 a function that prints bivariate plots of outcome against exposure (from a list of predictors in order)
 }
 \examples{
 exposures <- list(cities$life_expectancy, cities$happiness_level)
-cplot(exposures, cities$cities$obesity)
+plot_list <- cplot(exposures, cities$obesity_level)
+plot_list$`Exposure 1`
+plot_list$`Exposure 2`
 }
