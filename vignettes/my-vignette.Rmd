@@ -20,7 +20,7 @@ library(corrRank)
 
 ## Introduction
 
-When working with a new data set, you often want to understand which variables are related and how. Before beginning a linear regression analysis, you may also want to explore relationships between potential predictors and outcomes. Analyzing each pair of correlations manually takes time and effort. The corrRank package speeds up this process by providing useful summaries and visualizations of predictor-outcome correlations.
+When working with a new dataset, you often want to understand which variables are related and how. Before beginning a linear regression analysis, you may also want to explore relationships between potential predictors and outcomes. Manually analyzing each pair of correlations takes time and effort. The corrRank package speeds up this process by providing useful summaries and visualizations of predictor-outcome correlations.
 
 With corrRank, you can quickly discover:
 * The predictor with the strongest (and weakest) association with your outcome
@@ -34,7 +34,19 @@ The package has a built-in dataset, `cities`, which we will use to explore the p
 
 ## Function: `corrRank()`
 
+The `corrRank` function takes two inputs: a list of named predictor vectors and a single outcome vector. All predictors and the outcome must be numeric variables (preferably continuous) to perform the correlation analysis. 
 
+In the `cities` data, let's say we want to explore which factors are associated with a city's happiness level (`happiness_level`). Based on background knowledge, we believe that average hours worked annually (`avg_hours_worked_annual`), pollution (`pollution_index`) and number of hours of sunshine per year (`sunshine_hours`) may be associated with happiness. Using corrRank(), we write:
+
+```{r}
+corrRank(list(Work = cities$avg_hours_worked_annual, Pollution = cities$pollution_index, Sunshine = cities$sunshine_hours), cities$happiness_level)
+```
+
+The output is a dataframe listing the predictors in order of strongest to weakest linear association with happiness level (by absolute value), as well as the correlation value, its significance, and a description of the correlation. Positive correlations mean that as the predictor increases, the outcome tends to increase as well. Negative correlations mean that as the predictor increases, the outcome tends to decrease.
+
+Predictors with a higher rank may be worth looking into further. However, a high correlation value doesn't mean that predictor will be significant in a multiple linear regression setting. `corrRank()` is an exploratory tool to get you started on associations, but shouldn't be used to make decisions on more complex regression modelling.
+
+Inside `corrRank()`, make sure to specify a name for each predictor and include all predictors inside of one list. The outcome of interest should remain in vector format and doesn't need to be named.
 
 ## Function: `cplot()`
 
