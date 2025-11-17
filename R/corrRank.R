@@ -17,18 +17,19 @@ corrRank = function(predictors, outcome){
     stopifnot("Predictors and outcome must be equal length" = length(predictor)==length(outcome))
     stopifnot("Predictors must be numeric" = is.numeric(predictor))
 
+    correlation = round(cor(predictor, outcome, use = "complete.obs"),2)
     ranking = rbind(ranking, data.frame(Predictor = names(predictors)[i],
-                                        Correlation = round(cor(predictor, outcome, use = "complete.obs"),2),
+                                        Correlation = correlation,
                                         Significance = ifelse(cor.test(predictor, outcome)$p.value < 0.05, "Yes", "No"),
-                                        "Linear Association" = dplyr::case_when(Correlation == -1 ~ "Perfect negative",
-                                                                Correlation == 1 ~ "Perfect positive",
-                                                                Correlation == 0 ~ "None",
-                                                                Correlation >= 0.8 & Correlation < 1 ~ "Strong positive",
-                                                                Correlation >= 0.6 & Correlation < 0.8 ~ "Moderate positive",
-                                                                Correlation > 0 & Correlation < 0.6 ~ "Weak positive",
-                                                                Correlation < 0 & Correlation > -0.6 ~ "Weak negative",
-                                                                Correlation <= -0.6 & Correlation > -0.8 ~ "Moderate negative",
-                                                                Correlation > -1 & Correlation <= -0.8 ~ "Strong negative")))
+                                        "Linear Association" = dplyr::case_when(correlation == -1 ~ "Perfect negative",
+                                                                correlation == 1 ~ "Perfect positive",
+                                                                correlation == 0 ~ "None",
+                                                                correlation >= 0.8 & correlation < 1 ~ "Strong positive",
+                                                                correlation >= 0.6 & correlation < 0.8 ~ "Moderate positive",
+                                                                correlation > 0 & correlation < 0.6 ~ "Weak positive",
+                                                                correlation < 0 & correlation > -0.6 ~ "Weak negative",
+                                                                correlation <= -0.6 & correlation > -0.8 ~ "Moderate negative",
+                                                                correlation > -1 & correlation <= -0.8 ~ "Strong negative")))
   }
   ranking = ranking %>% dplyr::arrange(desc(abs(Correlation)))
   return(ranking)
